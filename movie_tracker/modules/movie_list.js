@@ -16,6 +16,7 @@ const movieList = {
         return this;
     },
     delete(i) {
+        this.sort
         Movies.splice(i, 1);
         return this;
     },

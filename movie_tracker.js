@@ -45,4 +45,17 @@ dom.load(() => {
         movieList.clear();
         displayMovies();
     });
+
+    dom.addClick("#delete_movie", () => {
+        const select = dom.get("#movies");
+        const selectedIndex = select.selectedIndex;
+
+        if (selectedIndex === -1) {
+            dom.setText("#msg", "Please select a movie to delete.");
+        } else {
+            dom.setText("#msg", "");
+            movieList.delete(selectedIndex).save();
+            displayMovies();
+        }
+    });
 });
