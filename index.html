@@ -39,18 +39,19 @@
 
     <div class="clear"></div>
     <p id="msg"></p>
-       
+
     <script type="importmap">
         {
           "imports": {
-            "storage": "../general_modules/storage.js",
-            "DOM": "../general_modules/DOM.js",
-            "task":"./modules/movie.js",
-            "task_storage":"./modules/movie_storage.js",
-            "task_list":"./modules/movie_list.js"
+            "storage": "./general_modules/storage.js",
+            "DOM": "./general_modules/DOM.js",
+            "task": "./movie_tracker/modules/movie.js",
+            "task_storage": "./movie_tracker/modules/movie_storage.js",
+            "task_list": "./movie_tracker/modules/movie_list.js"
           }
         }
     </script>
-    <script src="movie_tracker/modules/movie_list.js" type="module"></script>
+
+    <script src="movie_tracker.js" type="module"></script>
 </body>
 </html>

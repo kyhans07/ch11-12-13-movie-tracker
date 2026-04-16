@@ -1,13 +1,13 @@
 import * as storage from 'storage';
-import Movie from 'movie';
+import Movie from 'task';
 
 const movieStorage = {
     retrieve() {
         const movies = [];
-        const movieArray = storage.retrieve("Movies"); // Match the key used in store()
+        const movieArray = storage.retrieve("Movies");
         if(movieArray) {
             for(let obj of movieArray) {
-                // Movie objects to keep the toString() method
+                // Re-instantiate as Movie objects
                 movies.push(new Movie(obj.title, obj.genre, obj.rating));
             }
         }
@@ -16,7 +16,7 @@ const movieStorage = {
     store(movies) {
         storage.store("Movies", Array.from(movies));
     },
-    remove() { 
+    remove() {
         storage.remove("Movies");
     }
 };

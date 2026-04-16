@@ -1,6 +1,6 @@
-import movieStorage from './movie_storage';
+import movieStorage from 'task_storage';
 
-let Movies = [];         // private variable
+let Movies = [];
 
 const movieList = {
     load() {
@@ -32,7 +32,7 @@ const movieList = {
         });
         return this;
     },
-    *[Symbol.iterator]() { 
+    *[Symbol.iterator]() {
         for (let movie of Movies) {
             yield movie;
         }
