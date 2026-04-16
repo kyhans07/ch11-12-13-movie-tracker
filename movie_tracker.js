@@ -1,25 +1,27 @@
-import dom from "./movie_tracker/modules/movie_list";
-import movieList from "./movie_tracker/modules/movie_list";
-
+import * as dom from "DOM";
+import movieList from "task_list";
+import Movie from "task";
 
 const displayMovies = () => {
-   movieList.sort();
+    movieList.load().sort();
 
    const select = dom.get("#movies");
-   select.textConetn = "";
+   select.textContent = "";
 
-   for (let movie of movieList) {
-       const opt = document.createElement("option");
-       opt.appendChild(document.createTextNode(movie));
-       select.appendChild(opt);
-   }
+    for (let movie of movieList) {
+        const opt = document.createElement("option");
+        // Use the Movie's toString() method for display
+        opt.appendChild(document.createTextNode(movie.toString()));
+        select.appendChild(opt);
+    }
     dom.focus("#movie");
 }
 
 dom.load(() => {
+    displayMovies();
+
     dom.addClick("#add_movie", () => {
         dom.clear("#msg");
-
 
         const newMovie = new Movie(
             dom.getValue("#movie"),
@@ -27,36 +29,20 @@ dom.load(() => {
             dom.getValue("#rating")
         );
 
-        let message = "";
         if (newMovie.title === "") {
-            message = "Movie title is required";
-        }
-
-        if (message === "") {
-            movieList.load().add(newMovie).save();
+            dom.setText("#msg", "Movie title is required");
+            dom.select("#movie");
+        } else {
+            movieList.add(newMovie).save();
             dom.clear("#movie");
             dom.clear("#genre");
-            dom.clear("#rating");
+            dom.setValue("#rating", "5"); // Reset to default
             displayMovies();
-        }   else {
-            dom.setText("#msg, message");
-            dom.select("#movie");
         }
     });
 
     dom.addClick("#clear_movies", () => {
         movieList.clear();
-        dom.clear("#movies");
-
-
-    })
-
-
-
-
-    }
-
-
-
-
-)
+        displayMovies();
+    });
+});
