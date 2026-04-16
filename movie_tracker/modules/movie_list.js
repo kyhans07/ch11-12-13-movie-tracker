@@ -16,7 +16,6 @@ const movieList = {
         return this;
     },
     delete(i) {
-        this.sortByDueDate(); // sort so in same order as page
         Movies.splice(i, 1);
         return this;
     },
