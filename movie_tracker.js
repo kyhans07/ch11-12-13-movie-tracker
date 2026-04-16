@@ -1,6 +1,19 @@
+/**
+ * Description: Main controller logic for the Movie Tracker application.
+ * Handles UI interactions, data validation, and list rendering.
+ * Author: Kyler Hanson
+ * Date: 2026-04-16
+ * GitHub: https://github.com/kyhans07
+ */
+
 import * as dom from "DOM";
 import movieList from "task_list";
 import Movie from "task";
+
+/**
+ * Loads the movie list from storage, sorts it, and renders each movie
+ * as an option in the display select box.
+ */
 
 const displayMovies = () => {
     movieList.load().sort();
@@ -20,6 +33,7 @@ const displayMovies = () => {
 dom.load(() => {
     displayMovies();
 
+    // Event listener for adding a new movie
     dom.addClick("#add_movie", () => {
         dom.clear("#msg");
 
@@ -41,11 +55,13 @@ dom.load(() => {
         }
     });
 
+    // Event listener to clear the entire collection
     dom.addClick("#clear_movies", () => {
         movieList.clear();
         displayMovies();
     });
 
+    // Event listener for deleting a specific movie
     dom.addClick("#delete_movie", () => {
         const select = dom.get("#movies");
         const selectedIndex = select.selectedIndex;
