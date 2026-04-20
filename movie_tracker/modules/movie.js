@@ -1,3 +1,10 @@
+/**
+ * Description: Data access object for movie storage using local storage.
+ * Author: Kyler Hanson
+ * Date: 2026-04-16
+ * GitHub: https://github.com/kyhans07
+ */
+
 class Movie {
     /**
      * Creates a new Movie instance.
