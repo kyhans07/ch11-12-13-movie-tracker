@@ -1,7 +1,7 @@
 /**
  * Description: General utility for local storage manipulation.
  * Author: Kyler Hanson
- * Date: 2026-04-16
+ * Date: 2026-04-15
  * GitHub: https://github.com/kyhans07
  */
 
